@@ -1,0 +1,27 @@
+services:
+  db_order:
+    image: mysql:8.4
+    container_name: db_order
+    restart: always
+    environment:
+      MYSQL_DATABASE: phobos
+      MYSQL_ROOT_PASSWORD: 12345678
+    ports:
+      - "3306:3306"
+
+  db_customer:
+    image: mysql:8.4
+    container_name: db_customer
+    restart: always
+    environment:
+      MYSQL_DATABASE: phoenix
+      MYSQL_ROOT_PASSWORD: 12345678
+    ports:
+      - "3307:3306"
+
+  rabbit_queue:
+    image: rabbitmq:3-management-alpine
+    container_name: "rabbit_queue"
+    ports:
+      - 5672:5672
+      - 15672:15672
